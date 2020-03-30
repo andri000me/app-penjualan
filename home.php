@@ -101,7 +101,7 @@ if (!empty($_SESSION['level'])) {
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link <?php if ($view == "laporan") echo 'active'; ?>" href="?view=laporan">
+                     <a class="nav-link <?php if ($view == "laporan" or $view == "laporan-periode") echo 'active'; ?>" href="?view=laporan">
                         <i class="fa fa-file"></i> Laporan
                      </a>
                   </li>
@@ -188,6 +188,7 @@ if (!empty($_SESSION['level'])) {
       <script src="asset/datatables/jquery.dataTables.min.js"></script>
       <script src="asset/datatables/dataTables.bootstrap4.min.js"></script>
       <script src="asset/sweetalert/sweetalert.min.js"></script>
+      <script src="asset/chart.js/Chart.min.js"></script>
 
       <!-- script custom -->
       <?php include("script/home_js.php"); ?>

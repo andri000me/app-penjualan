@@ -41,7 +41,6 @@
                $grand_penjualan = 0;
                $grand_pembelian = 0;
                $grand_pengeluaran = 0;
-               $grand_pendapatan = 0;
 
                while (strtotime($awal) <= strtotime($akhir)) :
                   // ambil data tanggal
@@ -49,24 +48,29 @@
                   $awal = date('Y-m-d', strtotime("+1 day", strtotime($awal)));
 
                   // jumlah total penjualan
-                  $query_jl = "SELECT SUM('total_jl') AS total_penjualan FROM penjualan WHERE tgl_jl LIKE '$tanggal'";
+                  $query_jl = "SELECT SUM(total_jl) AS total_penjualan FROM penjualan WHERE tgl_jl LIKE '$tanggal'";
                   $sql_jl = mysqli_query($conn, $query_jl) or die(mysqli_error($conn));
                   $data_jl = mysqli_fetch_assoc($sql_jl);
                   $total_penjualan = $data_jl['total_penjualan'];
                   $grand_penjualan += $total_penjualan;
 
                   // jumlah total pembelian
-                  $total_pembelian = 0;
+                  $query_bl = "SELECT SUM(total_bl) AS total_pembelian FROM pembelian WHERE tgl_bl LIKE '$tanggal'";
+                  $sql_bl = mysqli_query($conn, $query_bl) or die(mysqli_error($conn));
+                  $data_bl = mysqli_fetch_assoc($sql_bl);
+                  $total_pembelian = $data_bl['total_pembelian'];
                   $grand_pembelian += $total_pembelian;
 
                   // jumlah total pengeluaran
-                  $total_pengeluaran = 0;
+                  $query_lr = "SELECT SUM(nmnl_lr) AS total_pengeluaran FROM pengeluaran WHERE tgl_lr LIKE '$tanggal'";
+                  $sql_lr = mysqli_query($conn, $query_lr) or die(mysqli_error($conn));
+                  $data_lr = mysqli_fetch_assoc($sql_lr);
+                  $total_pengeluaran = $data_lr['total_pengeluaran'];
                   $grand_pengeluaran += $total_pengeluaran;
 
                   // jumlah total pendapatan
                   $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
                   $total_pendapatan += $pendapatan;
-                  $grand_pendapatan += $total_pendapatan;
             ?>
                   <tr>
                      <td class="text-center"><?= $no++ ?></td>
@@ -81,7 +85,7 @@
                         Rp. <span class="float-right"><?= rupiah($total_pengeluaran) ?> ,-</span>
                      </td>
                      <td class="text-success">
-                        Rp. <span class="float-right"><?= rupiah($total_pendapatan) ?> ,-</span>
+                        Rp. <span class="float-right"><?= rupiah($pendapatan) ?> ,-</span>
                      </td>
                   </tr>
             <?php
@@ -107,7 +111,7 @@
                </td>
                <td class="text-success">
                   <strong>
-                     Rp. <span class="float-right"><?= rupiah($grand_pendapatan) ?> ,-</span>
+                     Rp. <span class="float-right"><?= rupiah($total_pendapatan) ?> ,-</span>
                   </strong>
                </td>
             </tr>
