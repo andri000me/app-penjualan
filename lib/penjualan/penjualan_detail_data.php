@@ -29,7 +29,7 @@ while ($list = mysqli_fetch_array($sql)) {
          <div class="text-center">
             <div class="btn-group btn-group-sm">
                <button type="button" class="btn btn-sm btn-secondary" onclick="deleteItem(' . $list['prd_id'] . ')">
-                  <i class="fa fa-trash"></i> Hapus
+                  <i class="fa fa-trash"></i>
                </button>
             </div>
          </div>

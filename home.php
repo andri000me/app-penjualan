@@ -101,7 +101,7 @@ if (!empty($_SESSION['level'])) {
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">
+                     <a class="nav-link <?php if ($view == "laporan") echo 'active'; ?>" href="?view=laporan">
                         <i class="fa fa-file"></i> Laporan
                      </a>
                   </li>
@@ -132,6 +132,11 @@ if (!empty($_SESSION['level'])) {
                      <li class="nav-item">
                         <a class="nav-link <?php if ($view == "operator") echo 'active'; ?>" href="?view=operator">
                            <i class="fa fa-home"></i> Operator
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link <?php if ($view == "produk") echo 'active'; ?>" href="?view=produk">
+                           <i class="fa fa-cubes"></i> Produk
                         </a>
                      </li>
                      <li class="nav-item">

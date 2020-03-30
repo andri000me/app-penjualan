@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include("../../src/pengaturan.php");
 include("../../src/rupiah.php");
 
@@ -14,11 +16,14 @@ while ($list = mysqli_fetch_array($sql)) {
    $row[]  = '<center>' . $no++ . '</center>';
    $row[]  = $list['nama_prd'];
    $row[]  = '<p class="text-center">' . $list['nama_stn'] . '</p>';
-   $row[]  = 'Rp. <span class="float-right">' . rupiah($list['beli_prd']) . '</span>';
+   if ($_SESSION['level'] == 1) {
+      $row[]  = 'Rp. <span class="float-right">' . rupiah($list['beli_prd']) . '</span>';
+   }
    $row[]  = 'Rp. <span class="float-right">' . rupiah($list['jual_prd']) . '</span>';
    $row[]  = '<span class="float-right">' . number_format($list['disk_prd']) . ' %</span>';
    $row[]  = '<p class="text-right">' . number_format($list['stok_prd']) . '</p>';
-   $row[]  = '
+   if ($_SESSION['level'] == 1) {
+      $row[]  = '
          <div class="text-center">
             <div class="btn-group btn-group-sm">
                <button type="button" class="btn btn-warning text-white" onclick="ubahForm(' . $list['id_prd'] . ')">
@@ -30,6 +35,7 @@ while ($list = mysqli_fetch_array($sql)) {
             </div>
          </div>
    ';
+   }
 
    $data[] = $row;
 }

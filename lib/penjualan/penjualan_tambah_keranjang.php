@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../../src/pengaturan.php");
+include("../../src/diskon.php");
 
 // ambil data post dari ajax jquery
 $id_prd   = $_POST['id_produk'];
@@ -17,10 +18,10 @@ if ($cek < 1) {
    $list    = mysqli_fetch_array($sql);
 
    // varibel
-   $sess_id  = $_SESSION['id_jual'];
+   $sess_id = $_SESSION['id_jual'];
    $prd_id  = $list['id_prd'];
    $nama    = $list['nama_prd'];
-   $harga   = $list['jual_prd'];
+   $harga   = diskon($list['jual_prd'], $list['disk_prd']);
 
    // sql query
    $query2   = "INSERT INTO krj_jual SET

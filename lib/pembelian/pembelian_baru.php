@@ -7,6 +7,7 @@ $item       = 0;
 $total      = 0;
 $diskon     = 0;
 $bayar      = 0;
+$user       = $_SESSION['nama_lengkap'];
 $waktu      = date('Y-m-d H:i:s');
 
 // sql query
@@ -18,6 +19,7 @@ $query   = "INSERT INTO pembelian SET
                total_bl = '$total',
                disk_bl = '$diskon',
                byr_bl = '$bayar',
+               user_bl = '$user',
                wkt_bl = '$waktu'
             ";
 

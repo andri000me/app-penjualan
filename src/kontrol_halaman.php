@@ -30,3 +30,7 @@ elseif ($view == "penjualan-baru") include("lib/penjualan/penjualan_baru.php");
 elseif ($view == "penjualan-batal") include("lib/penjualan/penjualan_batal.php");
 elseif ($view == "penjualan-detail") include("lib/penjualan/penjualan_detail.php");
 elseif ($view == "penjualan-simpan") include("lib/penjualan/penjualan_simpan.php");
+
+// views data laporan
+elseif ($view == "laporan") include("app/laporan.php");
+elseif ($view == "laporan-periode") include("app/laporan_periode.php");

@@ -4,18 +4,20 @@
       <div class="col">
          <h3>Data Penjualan</h3>
       </div>
-      <div class="col">
-         <div class="btn-group float-right">
-            <?php if (!empty($_SESSION['id_beli'])) : ?>
-               <a class="btn btn-warning text-white" href="?view=penjualan-detail&id=<?= $_SESSION['id_beli'] ?>">
-                  <i class="fa fa-undo"></i> Penjualan Aktif
+      <?php if ($_SESSION['level'] == 2) : ?>
+         <div class="col">
+            <div class="btn-group float-right">
+               <?php if (!empty($_SESSION['id_jual'])) : ?>
+                  <a class="btn btn-warning text-white" href="?view=penjualan-detail&id=<?= $_SESSION['id_jual'] ?>">
+                     <i class="fa fa-undo"></i> Penjualan Aktif
+                  </a>
+               <?php endif; ?>
+               <a class=" btn btn-primary btn-tambah" href="?view=penjualan-baru">
+                  <i class="fa fa-plus"></i> Penjualan Baru
                </a>
-            <?php endif; ?>
-            <a class=" btn btn-primary btn-tambah" href="?view=penjualan-baru">
-               <i class="fa fa-plus"></i> Penjualan Baru
-            </a>
+            </div>
          </div>
-      </div>
+      <?php endif; ?>
    </div>
    <hr style="margin-top: 3px; margin-bottom: 10px;">
    <table class="table table-sm table-bordered table-hover dataTable">

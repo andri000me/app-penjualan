@@ -1,6 +1,6 @@
 <div class="container">
    <?php
-   $query1   = "SELECT * FROM pembelian JOIN supplier on pembelian.supp_id=supplier.id_supp WHERE id_bl='$_GET[id]'";
+   $query1   = "SELECT * FROM penjualan WHERE id_jl='$_GET[id]'";
    $sql1     = mysqli_query($conn, $query1) or die(mysqli_error($conn));
    $data     = mysqli_fetch_array($sql1);
    ?>
@@ -8,10 +8,10 @@
    <!-- konten -->
    <div class="row justify-conten-between">
       <div class="col">
-         <h3><?= tanggal($data['tgl_bl'], true) ?></h3>
+         <h3><?= tanggal($data['tgl_jl'], true) ?></h3>
       </div>
       <div class="col">
-         <h3 class="text-right"><?= $data['nama_supp'] ?></h3>
+         <h3 class="text-right"><?= $data['nama_customer'] ?></h3>
       </div>
    </div>
    <hr style="margin-top: 3px; margin-bottom: 10px;">
@@ -27,7 +27,7 @@
       </thead>
       <tbody>
          <?php
-         $query   = "SELECT * FROM pembelian_detail WHERE beli_id='$_GET[id]'";
+         $query   = "SELECT * FROM penjualan_detail WHERE jual_id='$_GET[id]'";
          $sql     = mysqli_query($conn, $query) or die(mysqli_error($conn));
          $item    = mysqli_num_rows($sql);
          $grandtotal = 0;
@@ -37,12 +37,12 @@
                <td class="align-middle"><?= $list['prd_nama'] ?></td>
                <td class="align-middle">Rp. <span class="float-right"><?= rupiah($list['prd_hrg']) ?></span></td>
                <td class="align-middle text-center">
-                  <span><?= number_format($list['jml_bdet']) ?></span>
+                  <span><?= number_format($list['jml_jdet']) ?></span>
                </td>
-               <td class="align-middle">Rp. <span class="float-right"><?= rupiah($list['prd_hrg'] * $list['jml_bdet']) ?></span></td>
+               <td class="align-middle">Rp. <span class="float-right"><?= rupiah($list['prd_hrg'] * $list['jml_jdet']) ?></span></td>
             </tr>
          <?php
-            $grandtotal += $list['prd_hrg'] * $list['jml_bdet'];
+            $grandtotal += $list['prd_hrg'] * $list['jml_jdet'];
          }
          ?>
          <tr>
@@ -65,17 +65,17 @@
                <span class="float-right font-weight-bold">Diskon :</span>
             </td>
             <td class="align-middle">
-               <span class="float-right font-weight-bold"><?= rupiah($data['disk_bl']) ?> %</span></td>
+               <span class="float-right font-weight-bold"><?= rupiah($data['disk_jl']) ?> %</span></td>
          </tr>
          <tr>
             <td class="align-middle" colspan="3">
                <span class="float-right font-weight-bold">Total Bayar :</span>
             </td>
             <td class="align-middle">
-               Rp. <span class="float-right font-weight-bold"><?= rupiah($data['byr_bl']) ?></span></td>
+               Rp. <span class="float-right font-weight-bold"><?= rupiah($data['byr_jl']) ?></span></td>
          </tr>
       </tbody>
    </table>
 
-   Administrator : <strong><?= $data['user_bl'] ?></strong>
+   Operator : <strong><?= $data['user_jl'] ?></strong>
 </div>

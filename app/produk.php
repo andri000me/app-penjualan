@@ -24,13 +24,17 @@
       <div class="col">
          <h3>Data Produk</h3>
       </div>
-      <div class="col">
-         <div class="btn-group float-right">
-            <button type="button" class=" btn btn-primary btn-tambah" onclick="tambahForm()">
-               <i class="fa fa-plus"></i> Tambah
-            </button>
+      <?php
+      if ($_SESSION['level'] == 1) {
+      ?>
+         <div class="col">
+            <div class="btn-group float-right">
+               <button type="button" class=" btn btn-primary btn-tambah" onclick="tambahForm()">
+                  <i class="fa fa-plus"></i> Tambah
+               </button>
+            </div>
          </div>
-      </div>
+      <?php } ?>
    </div>
    <hr style="margin-top: 3px; margin-bottom: 10px;">
    <table class="table table-sm table-bordered table-hover dataTable">
@@ -39,11 +43,17 @@
             <th class="text-center" width="30">No. </th>
             <th>Nama Produk</th>
             <th class="text-center" width="150">Satuan</th>
-            <th class="text-center" width="100">H.Beli</th>
+            <?php if ($_SESSION['level'] == 1) : ?>
+               <th class="text-center" width="100">H.Beli</th>
+            <?php endif; ?>
             <th class="text-center" width="100">H.Jual</th>
             <th class="text-center" width="50">Disk</th>
             <th class="text-center" width="50">Stok</th>
-            <th class="text-center" width="150">Tombol Aksi</th>
+            <?php
+            if ($_SESSION['level'] == 1) {
+            ?>
+               <th class="text-center" width="150">Tombol Aksi</th>
+            <?php } ?>
          </tr>
       </thead>
       <tbody></tbody>
@@ -51,73 +61,77 @@
 </div>
 
 <!-- Modal Form -->
-<div class="modal" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-         <form>
-            <input type="hidden" id="id">
-            <div class="modal-header">
-               <h5 class="modal-title"></h5>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <div class="col-8">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Produk :</label>
-                        <input type="text" class="form-control" id="nama" placeholder="masukkan nama produk" required>
+<?php
+if ($_SESSION['level'] == 1) {
+?>
+   <div class="modal" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <form>
+               <input type="hidden" id="id">
+               <div class="modal-header">
+                  <h5 class="modal-title"></h5>
+               </div>
+               <div class="modal-body">
+                  <div class="row">
+                     <div class="col-8">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Nama Produk :</label>
+                           <input type="text" class="form-control" id="nama" placeholder="masukkan nama produk" required>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Satuan :</label>
+                           <select id="satuan" class="form-control" required>
+                              <?php
+                              $query   = "SELECT * FROM satuan ORDER BY wkt_stn DESC";
+                              $sql     = mysqli_query($conn, $query) or die(mysqli_error($conn));
+                              while ($satuan  = mysqli_fetch_array($sql)) {
+                              ?>
+                                 <option value="<?= $satuan['id_stn'] ?>"><?= $satuan['nama_stn'] ?></option>
+                              <?php } ?>
+                           </select>
+                        </div>
                      </div>
                   </div>
-                  <div class="col-4">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Satuan :</label>
-                        <select id="satuan" class="form-control" required>
-                           <?php
-                           $query   = "SELECT * FROM satuan ORDER BY wkt_stn DESC";
-                           $sql     = mysqli_query($conn, $query) or die(mysqli_error($conn));
-                           while ($satuan  = mysqli_fetch_array($sql)) {
-                           ?>
-                              <option value="<?= $satuan['id_stn'] ?>"><?= $satuan['nama_stn'] ?></option>
-                           <?php } ?>
-                        </select>
+                  <div class="row">
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">H. Beli :</label>
+                           <input type="number" class="form-control" id="beli" placeholder="0" required>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">H. Jual :</label>
+                           <input type="number" class="form-control" id="jual" placeholder="0" required>
+                        </div>
+                     </div>
+                     <div class="col-2">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Diskon :</label>
+                           <input type="number" class="form-control" id="diskon" value="0">
+                        </div>
+                     </div>
+                     <div class="col-2">
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Stok :</label>
+                           <input type="number" class="form-control" id="stok" value="0">
+                        </div>
                      </div>
                   </div>
                </div>
-               <div class="row">
-                  <div class="col-4">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">H. Beli :</label>
-                        <input type="number" class="form-control" id="beli" placeholder="0" required>
-                     </div>
-                  </div>
-                  <div class="col-4">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">H. Jual :</label>
-                        <input type="number" class="form-control" id="jual" placeholder="0" required>
-                     </div>
-                  </div>
-                  <div class="col-2">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Diskon :</label>
-                        <input type="number" class="form-control" id="diskon" value="0">
-                     </div>
-                  </div>
-                  <div class="col-2">
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Stok :</label>
-                        <input type="number" class="form-control" id="stok" value="0">
-                     </div>
-                  </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                     <i class="fa fa-reply"></i> Batal
+                  </button>
+                  <button type="submit" class="btn btn-success">
+                     <i class="fa fa-check"></i> Simpan Data
+                  </button>
                </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  <i class="fa fa-reply"></i> Batal
-               </button>
-               <button type="submit" class="btn btn-success">
-                  <i class="fa fa-check"></i> Simpan Data
-               </button>
-            </div>
-         </form>
+            </form>
+         </div>
       </div>
    </div>
-</div>
+<?php } ?>

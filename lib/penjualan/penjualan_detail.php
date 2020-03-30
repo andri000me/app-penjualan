@@ -83,7 +83,7 @@
                         <button type="submit" class="btn btn-primary">
                            <i class="fa fa-check-circle"></i> Simpan Penjualan
                         </button>
-                        <a href="?view=penjualan-batal&id=<?= $_SESSION['id_beli']; ?>" class="btn btn-danger">
+                        <a href="?view=penjualan-batal&id=<?= $_SESSION['id_jual']; ?>" class="btn btn-danger">
                            <i class="fa fa-times"></i> Batal
                         </a>
                      </div>
