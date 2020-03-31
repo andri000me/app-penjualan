@@ -189,6 +189,7 @@ if (!empty($_SESSION['level'])) {
       <script src="asset/datatables/dataTables.bootstrap4.min.js"></script>
       <script src="asset/sweetalert/sweetalert.min.js"></script>
       <script src="asset/chart.js/Chart.min.js"></script>
+      <script src="asset/printarea/js/jquery.printarea.js"></script>
 
       <!-- script custom -->
       <?php include("script/home_js.php"); ?>

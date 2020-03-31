@@ -3,6 +3,11 @@
       <div class="col">
          <h3>Data Laporan Per Bulan</h3>
       </div>
+      <div class="col text-right">
+         <button type="button" class="btn btn-dark btn-print">
+            <i class="fa fa-print"></i> Cetak Laporan
+         </button>
+      </div>
    </div>
    <hr style="margin-top: 3px; margin-bottom: 10px;">
    <form class="form-inline" method="POST" action="?view=laporan-periode">

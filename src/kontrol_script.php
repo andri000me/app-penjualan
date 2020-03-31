@@ -10,6 +10,8 @@ elseif ($view == "supplier") include("script/supplier_js.php");
 elseif ($view == "user") include("script/user_js.php");
 elseif ($view == "pengeluaran") include("script/pengeluaran_js.php");
 elseif ($view == "produk") include("script/produk_js.php");
+elseif ($view == "laporan") include("script/laporan_js.php");
+elseif ($view == "laporan-periode") include("script/laporan_periode_js.php");
 elseif ($view == "pembelian") include("script/pembelian_js.php");
 elseif ($view == "pembelian-detail") include("script/pembelian_detail_js.php");
 elseif ($view == "penjualan") include("script/penjualan_js.php");
