@@ -71,7 +71,7 @@ if (!empty($_SESSION['level'])) {
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link <?php if ($view == "produk") echo 'active'; ?>" href="?view=produk">
+                     <a class="nav-link <?php if ($view == "produk" or $view == "produk-import-excel") echo 'active'; ?>" href="?view=produk">
                         <i class="fa fa-cubes"></i> Produk
                      </a>
                   </li>

@@ -10,8 +10,8 @@
       <div class="col-12">
          <table class="table table-bordered">
             <tr>
-               <td class="align-middle">
-                  <form name="myForm" id="myForm" onSubmit="return validateForm()" action="" method="post" enctype="multipart/form-data">
+               <td class="align-top">
+                  <form name="myForm" id="myForm" onSubmit="return validateForm()" action="lib/produk/produk_import.php" method="post" enctype="multipart/form-data">
                      <div class="form-group">
                         <div class="custom-file">
                            <input type="file" class="custom-file-input" name="file_excel" id="file_excel">
@@ -24,18 +24,17 @@
                      </div>
                   </form>
                </td>
-               <td class="align-middle">
+               <td class="align-top">
                   <div class="card shadow">
                      <div class="card-body text-center">
                         <h6 class="text-center">Download File Contoh</h6>
-                        <a href="upload/example_excel_import.xls" class="btn btn-sm btn-success">
+                        <a href="asset/contoh_file_import_excel.xls" class="btn btn-sm btn-success">
                            <i class="fa fa-download"></i> Unduh File
                         </a>
                      </div>
                   </div>
                </td>
-               <td class="align-middle">
-                  <h6 class="text-center">Daftar Satuan</h6>
+               <td class="align-top">
                   <table class="table table-sm table-bordered" width="100%">
                      <tr class="bg-dark text-white text-center">
                         <td>ID Satuan</td>
