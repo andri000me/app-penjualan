@@ -4,8 +4,8 @@
          <h3>Data Laporan Per Bulan</h3>
       </div>
       <div class="col text-right">
-         <button type="button" class="btn btn-dark btn-print">
-            <i class="fa fa-print"></i> Cetak Laporan
+         <button type="button" class="btn btn-sm btn-dark btn-print">
+            <i class="fa fa-print"></i> Cetak atau Ekspor PDF
          </button>
       </div>
    </div>
@@ -26,7 +26,6 @@
       <table class="table table-sm table-striped table-bordered" width="100%" cellspacing="0">
          <thead class="bg-dark text-white">
             <tr class="text-center">
-               <th width="10">No.</th>
                <th width="110">Tanggal</th>
                <th width="110"><span class="text-primary">Penjualan</span></th>
                <th width="110"><span class="text-warning">Pembelian</span></th>
@@ -38,7 +37,6 @@
             <?php
             $awal  = date('Y-m-d', mktime(0, 0, 0, date('m'), 1, date('Y')));
             $akhir = date('Y-m-d');
-            $no = 1;
             $data = array();
             $pendapatan = 0;
             $total_pendapatan = 0;
@@ -77,7 +75,6 @@
                $total_pendapatan += $pendapatan;
             ?>
                <tr>
-                  <td class="text-center"><?= $no++ ?></td>
                   <td class="text-center"><?= tanggal($tanggal) ?></td>
                   <td class="text-primary">
                      Rp. <span class="float-right"><?= rupiah($total_penjualan) ?> ,-</span>
@@ -94,7 +91,7 @@
                </tr>
             <?php endwhile; ?>
             <tr class="bg-dark text-white">
-               <td class="text-right" colspan="2"><strong>Grand Total :</strong></td>
+               <td class="text-center"><strong>Grand Total</strong></td>
                <td class="text-primary">
                   <strong>
                      Rp. <span class="float-right"><?= rupiah($grand_penjualan) ?> ,-</span>

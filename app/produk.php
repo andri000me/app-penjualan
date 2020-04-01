@@ -28,10 +28,13 @@
       if ($_SESSION['level'] == 1) {
       ?>
          <div class="col">
-            <div class="btn-group float-right">
+            <div class="float-right">
                <button type="button" class=" btn btn-primary btn-tambah" onclick="tambahForm()">
                   <i class="fa fa-plus"></i> Tambah
                </button>
+               <a href="?view=produk-import-excel" class=" btn btn-success btn-tambah">
+                  <i class="fa fa-file-excel"></i> Import Excel
+               </a>
             </div>
          </div>
       <?php } ?>

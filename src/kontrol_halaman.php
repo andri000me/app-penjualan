@@ -8,12 +8,15 @@ if ($view == "beranda") include("app/beranda.php");
 elseif ($view == "operator") include("app/operator.php");
 elseif ($view == "keluar") include("src/keluar.php");
 
-// views CRUD data 
+// views CRUD data standar
 elseif ($view == "satuan") include("app/satuan.php");
-elseif ($view == "produk") include("app/produk.php");
 elseif ($view == "supplier") include("app/supplier.php");
 elseif ($view == "user") include("app/user.php");
 elseif ($view == "pengeluaran") include("app/pengeluaran.php");
+
+// views data produk
+elseif ($view == "produk") include("app/produk.php");
+elseif ($view == "produk-import-excel") include("app/produk_import_excel.php");
 
 // views data pembelian
 elseif ($view == "pembelian") include("app/pembelian.php");
