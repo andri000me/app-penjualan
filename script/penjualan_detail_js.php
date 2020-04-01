@@ -82,8 +82,13 @@
                id_produk: $('#id_produk').val()
             },
             success: function(result) {
-               $('#id_produk').val("");
-               table.ajax.reload();
+               if (result == "gagal") {
+                  alert('stok produk masih kosong atau sedang habis');
+                  $('#id_produk').val("");
+               } else {
+                  $('#id_produk').val("");
+                  table.ajax.reload();
+               }
             },
             error: function() {
                alert('gagal .btn-tambah click');
@@ -102,9 +107,14 @@
             jumlah: $('#prd-' + productID).val()
          },
          success: function(response) {
-            table.ajax.reload(function() {
-               loadCart($('#disk').val());
-            });
+            if (response == "gagal") {
+               alert('stok produk tidak mencukupi');
+               $('#prd-' + productID).val(0);
+            } else {
+               table.ajax.reload(function() {
+                  loadCart($('#disk').val());
+               });
+            }
          },
          error: function() {
             alert('gagal ubahJumlah');
