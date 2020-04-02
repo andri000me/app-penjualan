@@ -115,9 +115,9 @@ if (!empty($_SESSION['level'])) {
                            <i class="fa fa-sm fa-key"></i> &nbsp; Ubah Password
                         </button>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="?view=backup">
+                        <button class="dropdown-item" onclick="backupDatabase()">
                            <i class="fa fa-sm fa-database"></i> &nbsp; Backup Data
-                        </a>
+                        </button>
                      </div>
                   </li>
                   <li class="nav-item">

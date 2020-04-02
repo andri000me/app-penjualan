@@ -4,6 +4,24 @@
          $('#area-print').printArea();
       });
    });
+
+   // function keluar aplikasi
+   function backupDatabase() {
+      Swal.fire({
+         text: "Apakah yakin ingin mencadangkan database aplikasi ?",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#28a745',
+         cancelButtonColor: '#6c757d',
+         confirmButtonText: 'Ya, backup',
+         cancelButtonText: 'Tidak, batal',
+      }).then((result) => {
+         if (result.value) {
+            window.location.href = '?view=backup';
+         }
+      });
+   }
+
    // function keluar aplikasi
    function keluarApp() {
       Swal.fire({
