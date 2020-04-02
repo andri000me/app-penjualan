@@ -106,14 +106,18 @@ if (!empty($_SESSION['level'])) {
                      </a>
                   </li>
                   <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i> Pengaturan</a>
+                     <a class="nav-link <?php if ($view == "backup") echo 'active'; ?> dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i> Pengaturan</a>
                      <div class="dropdown-menu">
                         <button class="dropdown-item" onclick="profilModal()">
-                           <i class="fa fa-user"></i> Profil
+                           <i class="fa fa-sm fa-user"></i> &nbsp; Profil
                         </button>
                         <button class="dropdown-item" onclick="ubahpassModal()">
-                           <i class="fa fa-key"></i> Ubah Password
+                           <i class="fa fa-sm fa-key"></i> &nbsp; Ubah Password
                         </button>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="?view=backup">
+                           <i class="fa fa-sm fa-database"></i> &nbsp; Backup Data
+                        </a>
                      </div>
                   </li>
                   <li class="nav-item">

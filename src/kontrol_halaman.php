@@ -37,3 +37,6 @@ elseif ($view == "penjualan-simpan") include("lib/penjualan/penjualan_simpan.php
 // views data laporan
 elseif ($view == "laporan") include("app/laporan.php");
 elseif ($view == "laporan-periode") include("app/laporan_periode.php");
+
+// views data backup dan restor
+elseif ($view == "backup") include("app/backup.php");
